@@ -1,0 +1,77 @@
+import React, { useState } from 'react';
+import logo from '../assets/logo/dp.jpg';
+import user from '../assets/logo/dp.jpg';
+
+const SideMenu = (props) => {
+    const [inactive, setInactive] = useState(false);
+  return (
+    <div className={`side-menu ${inactive ? "inactive" : ""}`}>
+        <div className="top-section">
+            <div className="logo">
+                <img src={logo} alt="logo"/>
+            </div>
+            <div onClick={() => setInactive(!inactive)} className="toggle-menu-btn">
+                {inactive ? <i class="bi bi-arrow-right-square-fill"></i> : <i class="bi bi-arrow-left-square-fill"></i>}
+            </div>
+        </div>
+
+        <div className="search-controller">
+            <button className="search-btn">
+                <i class="bi bi-search"></i>
+            </button>
+            <input type="text" placeholder="search"/>
+        </div>
+
+        <div className="divider"></div>
+
+        <div className="main-menu">
+            <ul>
+                <li>
+                    <a className="menu-item">
+                        <div className="menu-icon">
+                            <i class="bi bi-speedometer2"></i>
+                        </div>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a className="menu-item">
+                        <div className="menu-icon">
+                            <i class="bi bi-newspaper"></i>
+                        </div>
+                        Comtent
+                    </a>
+                    <ul className="sub-menu">
+                        <li>
+                            <a>Courses</a>
+                        </li>
+                        <li>
+                            <a>Videos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a className="menu-item">
+                        <div className="menu-icon">
+                            <i class="bi bi-vector-pen"></i>
+                        </div>
+                        Design
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div className="side-menu-footer">
+            <div className="avatar">
+                <img src={user} alt="user"/>
+            </div>
+            <div className="user-info">
+                <h5>Aman Raza</h5>
+                <p>amanraza1234@gmail.com</p>
+            </div>
+        </div>
+    </div>
+  );
+}
+
+export default SideMenu;
