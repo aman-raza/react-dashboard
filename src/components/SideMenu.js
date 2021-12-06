@@ -31,7 +31,7 @@ const SideMenu = (props) => {
                         <div className="menu-icon">
                             <i class="bi bi-speedometer2"></i>
                         </div>
-                        Dashboard
+                        <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
@@ -39,7 +39,7 @@ const SideMenu = (props) => {
                         <div className="menu-icon">
                             <i class="bi bi-newspaper"></i>
                         </div>
-                        Comtent
+                        <span>Content</span>
                     </a>
                     <ul className="sub-menu">
                         <li>
@@ -55,7 +55,7 @@ const SideMenu = (props) => {
                         <div className="menu-icon">
                             <i class="bi bi-vector-pen"></i>
                         </div>
-                        Design
+                        <span>Design</span>
                     </a>
                 </li>
             </ul>
