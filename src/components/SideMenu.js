@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo/dp.jpg';
 import user from '../assets/logo/dp.jpg';
+import MenuItem from './MenuItem';
 
 const SideMenu = (props) => {
     const [inactive, setInactive] = useState(false);
@@ -34,22 +35,9 @@ const SideMenu = (props) => {
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li>
-                    <a className="menu-item">
-                        <div className="menu-icon">
-                            <i class="bi bi-newspaper"></i>
-                        </div>
-                        <span>Content</span>
-                    </a>
-                    <ul className="sub-menu">
-                        <li>
-                            <a>Courses</a>
-                        </li>
-                        <li>
-                            <a>Videos</a>
-                        </li>
-                    </ul>
-                </li>
+                <MenuItem 
+                name = {"Content"}
+                subMenu={[{ name: "Courses" }, { name: "Videos" }]}/>
                 <li>
                     <a className="menu-item">
                         <div className="menu-icon">
