@@ -114,6 +114,12 @@ body{
     border-left: 1px solid #666;
     box-sizing: border-box;
     padding-left: 30px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .2s ease-in;
+}
+.side-menu .main-menu .sub-menu.active{
+    max-height: 200px;
 }
 .side-menu .main-menu .sub-menu a{
     display: block;

@@ -1,10 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../assets/logo/dp.jpg';
 import user from '../assets/logo/dp.jpg';
 import MenuItem from './MenuItem';
 
+const menuItems = [
+    { name: "Dashboard", to: "/", iconClassName: "bi bi-speedometer2" },
+    { name: "Content", to: "/content",
+    iconClassName: "bi bi-newspaper",
+    subMenus: [{ name: "Courses" }, { name: "Videos" }],
+    },
+    { name: "Design", to: "/design", iconClassName: "bi bi-vector-pen" },
+];
+
 const SideMenu = (props) => {
     const [inactive, setInactive] = useState(false);
+
+    useEffect(() => {
+        if(inactive){
+            document.querySelectorAll(".sub-menu").forEach((el) => {
+                el.classList.remove("active");
+            });
+        }
+    })
+
   return (
     <div className={`side-menu ${inactive ? "inactive" : ""}`}>
         <div className="top-section">
@@ -27,7 +45,22 @@ const SideMenu = (props) => {
 
         <div className="main-menu">
             <ul>
-                <li>
+                {menuItems.map((menuItem, index) => (
+                    <MenuItem
+                        key={index}
+                        name={menuItem.name}
+                        to={menuItem.to}
+                        subMenus={menuItem.subMenus || []}
+                        iconClassName={menuItem.iconClassName}
+                        onClick={() => {
+                            if(inactive){
+                                setInactive(false);
+                            }
+                        }}
+                    />
+                ))}
+
+                {/* <li>
                     <a className="menu-item">
                         <div className="menu-icon">
                             <i class="bi bi-speedometer2"></i>
@@ -45,7 +78,7 @@ const SideMenu = (props) => {
                         </div>
                         <span>Design</span>
                     </a>
-                </li>
+                </li> */}
             </ul>
         </div>
 
