@@ -4,10 +4,10 @@ import user from '../assets/logo/dp.jpg';
 import MenuItem from './MenuItem';
 
 const menuItems = [
-    { name: "Dashboard", to: "/", iconClassName: "bi bi-speedometer2" },
-    { name: "Content", to: "/content",
+    { name: "Dashboard", exact: true, to: "/", iconClassName: "bi bi-speedometer2" },
+    { name: "Content", exact: true, to: "/content",
     iconClassName: "bi bi-newspaper",
-    subMenus: [{ name: "Courses" }, { name: "Videos" }],
+    subMenus: [{ name: "Courses", to: "/content/courses" }, { name: "Videos", to: "/content/videos" }],
     },
     { name: "Design", to: "/design", iconClassName: "bi bi-vector-pen" },
 ];
@@ -21,7 +21,9 @@ const SideMenu = (props) => {
                 el.classList.remove("active");
             });
         }
-    })
+
+        props.onCollapse(inactive);
+    },  [inactive]);
 
   return (
     <div className={`side-menu ${inactive ? "inactive" : ""}`}>
@@ -49,6 +51,7 @@ const SideMenu = (props) => {
                     <MenuItem
                         key={index}
                         name={menuItem.name}
+                        exact={menuItem.exact}
                         to={menuItem.to}
                         subMenus={menuItem.subMenus || []}
                         iconClassName={menuItem.iconClassName}
